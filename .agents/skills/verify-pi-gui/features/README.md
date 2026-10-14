@@ -44,8 +44,15 @@ These user-facing surfaces have no feature file and no `prove.sh` checkpoint yet
 - Pinned extension cards above the composer (Expand/Collapse, Hide), `apps/desktop/src/features/extensions/pinned-cards.tsx`; core `extension-pinned-cards.spec.ts`.
 - Extension views opening links and threads, `apps/desktop/electron/extensions/extension-view-actions.ts`; core `extension-view-links.spec.ts`. The GitHub, Usage and Trace examples under `examples/desktop-extensions/` have core `extension-github-view`, `extension-usage-view` and `extension-trace-view` specs.
 - Extension flags chosen per thread on New thread, `apps/desktop/src/features/threads/extension-flags-selector.tsx`; core `extension-flags.spec.ts`.
+- Changing model or thinking level from the composer keeps the typed prompt, `apps/desktop/src/features/conversation/hooks/use-slash-menu.tsx`; core `model-change-keeps-draft.spec.ts`.
+- Side panel width handle ("Side panel width"), `apps/desktop/src/features/workbench/workbench-resize-handle.tsx`; core `workbench-tabs.spec.ts`.
+- Find in thread on Cmd/Ctrl+F (also in Cmd-K), `apps/desktop/src/app/use-desktop-commands.ts`; no spec found.
 
-## Latest observed proof (2026-10-07)
+## Latest observed proof (2026-10-14)
+
+Weekly maintenance pass, main still at `572c0c6`, Linux cloud session (Xvfb). Smoke `run-2LS29A` passed. Conversation `run-QLySMS` was **blocked** again at auth (`refresh_token_reused`), so the maintenance lane was not run and this pass has no real-provider proof. The same 30 fixture-backed core specs as 2026-10-07 passed 90/90 via `test:e2e:runner`, and core `model-change-keeps-draft.spec.ts` passed 1/1. The source pass found no wrong claims; it added three surfaces to the unmapped list above.
+
+## Earlier observed proof (2026-10-07)
 
 Weekly maintenance pass on main `572c0c6` in a Linux cloud session (Xvfb). Smoke `run-JOCJLj` passed. Conversation `run-DpBJix` was **blocked**, not failed by the app: openai-codex rejected the environment's saved refresh token as already used (`refresh_token_reused`), so the conversation lane stopped at auth, the maintenance lane was not run, and this pass has no real-provider proof. Fixture-backed core specs passed 90/90 via `test:e2e:runner` on the real Electron app: `archive`, `thread-menu`, `composer-draft-flush`, `sidebar-folder-collapse`, `navigation`, `sidebar-layout`, `worktrees`, `mcp-settings`, `skills-settings`, `scheduled-tasks`, `scheduled-task-runtime-tools`, `queued-messages`, `tool-output-images`, `extension-tool-labels`, `timeline-overflow`, `extensions`, `composer-controls`, the five `review-*` specs, `changed-files`, `turn-changes-card`, `workbench-tabs`, `transcript-annotations`, `extension-pinned-cards`, `extension-cards`, `extension-view-links` and `extension-flags`, plus 4/4 in unit `annotation-prompt.spec.ts`. The source pass found doc drift only; recipe selectors still match. Review and Add to Chat got their own feature files.
 
