@@ -44,13 +44,13 @@ These user-facing surfaces have no feature file and no `prove.sh` checkpoint yet
 - Pinned extension cards above the composer (Expand/Collapse, Hide), `apps/desktop/src/features/extensions/pinned-cards.tsx`; core `extension-pinned-cards.spec.ts`.
 - Extension views opening links and threads, `apps/desktop/electron/extensions/extension-view-actions.ts`; core `extension-view-links.spec.ts`. The GitHub, Usage and Trace examples under `examples/desktop-extensions/` have core `extension-github-view`, `extension-usage-view` and `extension-trace-view` specs.
 - Extension flags chosen per thread on New thread, `apps/desktop/src/features/threads/extension-flags-selector.tsx`; core `extension-flags.spec.ts`.
-- Changing model or thinking level from the composer keeps the typed prompt, `apps/desktop/src/features/conversation/hooks/use-slash-menu.tsx`; core `model-change-keeps-draft.spec.ts`.
+- Changing model or thinking level from the composer footer or `/model` and `/thinking` keeps the typed prompt, `apps/desktop/electron/conversation/app-store-composer.ts` and `apps/desktop/src/features/conversation/hooks/use-slash-menu.tsx`; core `model-change-keeps-draft.spec.ts` (footer pickers only).
 - Side panel width handle ("Side panel width"), `apps/desktop/src/features/workbench/workbench-resize-handle.tsx`; core `workbench-tabs.spec.ts`.
-- Find in thread on Cmd/Ctrl+F (also in Cmd-K), `apps/desktop/src/app/use-desktop-commands.ts`; no spec found.
+- Find in thread on Cmd/Ctrl+F (also in Cmd-K), `apps/desktop/src/app/use-desktop-commands.ts`; core `timeline-viewport.spec.ts` (shortcut open/close and match highlight; the Cmd-K entry is not driven).
 
 ## Latest observed proof (2026-10-14)
 
-Weekly maintenance pass, main still at `572c0c6`, Linux cloud session (Xvfb). Smoke `run-2LS29A` passed. Conversation `run-QLySMS` was **blocked** again at auth (`refresh_token_reused`), so the maintenance lane was not run and this pass has no real-provider proof. The same 30 fixture-backed core specs as 2026-10-07 passed 90/90 via `test:e2e:runner`, and core `model-change-keeps-draft.spec.ts` passed 1/1. The source pass found no wrong claims; it added three surfaces to the unmapped list above.
+Weekly maintenance pass, main still at `572c0c6`, Linux cloud session (Xvfb). Smoke `run-2LS29A` passed. Conversation `run-QLySMS` was **blocked** again at auth (`refresh_token_reused`), so the maintenance lane was not run and this pass has no real-provider proof. The same 30 fixture-backed core specs as 2026-10-07 passed 90/90 via `test:e2e:runner`, and core `model-change-keeps-draft.spec.ts` (1/1) and `timeline-viewport.spec.ts` (6/6) passed. The source pass found no wrong claims; it added three surfaces to the unmapped list above.
 
 ## Earlier observed proof (2026-10-07)
 
